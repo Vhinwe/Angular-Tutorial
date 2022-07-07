@@ -1,10 +1,9 @@
-import { Injectable } from "@angular/core";
-import { ApiService } from "../services/api.service";
-import { environment } from "../../environments/environment";
-import { map, Observable } from "rxjs";
+import { Injectable } from '@angular/core';
+import { ApiService } from '../services/api.service';
+import { environment } from '../../environments/environment';
+import { map, Observable } from 'rxjs';
 
-
-@Injectable ({
+@Injectable({
     providedIn: 'root'
 })
 
@@ -15,10 +14,16 @@ export class Sports {
 
     retrieveSportRecords(queryString: string): Observable<any>{
         let url = `${this.url}?key=${this.apiKey}`
-        url +=  queryString != '' ? `&q=${queryString}` : ``;
+        url += queryString != '' ? `&q=${queryString}` : '';
 
-        
         return this.apiService.getApi(url).pipe(
-        map((res: any) => res))
+            map((res: any) => res)
+        )
+    }
+
+    createSport(payload: any){
+        return this.apiService.postApi(this.url, payload).pipe(
+            map((res: any) => res)
+        )
     }
 }

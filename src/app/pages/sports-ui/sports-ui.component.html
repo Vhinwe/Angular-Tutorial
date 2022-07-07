@@ -1,5 +1,35 @@
 <h2 *ngIf="loading">Loading....</h2>
 
+<table *ngIf="cricketRecords.length > 0">
+    <thead>
+         <tr>
+         <th>S/N</th>
+         <th>Country</th>
+         <th>Region</th>
+         <th>Stadium</th>
+         <th>Start</th>
+         <th>Tournament</th>
+         <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cricket of cricketRecords; let i = index">
+            <td>{{ i * 1 }}</td>
+            <td>{{ cricket?.country }}</td>
+            <td>{{ cricket?.stadium }}</td>
+            <td>{{ cricket?.start }}</td>
+            <td>{{ cricket?.tournament }}</td>
+            <td>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    
+</table><br>
+
+<h2 *ngIf="loading">Loading....</h2>
+
 <table *ngIf="sportsRecords.length > 0">
     <thead>
          <tr>
@@ -26,5 +56,9 @@
             </td>
         </tr>
     </tbody>
-    
+    <div class="container">
+    <div *ngFor="let sport of sportsRecords;">
+        <app-sport [sport]="sport"></app-sport>
+    </div>
+    </div>
 </table>

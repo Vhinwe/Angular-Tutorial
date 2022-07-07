@@ -11,6 +11,7 @@ export class SportsUiComponent implements OnInit {
 
   loading: boolean = false;
   sportsRecords: Sport[] = [];
+  cricketRecords: Sport[] = [];
   constructor(private sports: Sports 
     ){}
 
@@ -24,6 +25,7 @@ export class SportsUiComponent implements OnInit {
       next: (res: any) => {
         this.loading = false;
         this.sportsRecords =res.football;
+        this.cricketRecords =res.cricket;
         console.log("response", res)
       },
       error: (err: any) => {
